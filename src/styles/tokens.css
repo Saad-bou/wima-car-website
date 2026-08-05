@@ -1,0 +1,71 @@
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+
+  --text-hero: 64px;
+  --text-section-title: 48px;
+  --text-section-subtitle: 22px;
+  --text-body: 18px;
+  --text-small: 16px;
+  --text-caption: 14px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --color-primary: #d90429;
+  --color-secondary: #111111;
+  --color-background: #ffffff;
+  --color-surface: #f8f8f8;
+  --color-border: #e8e8e8;
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
+  --spacing-container: 1280px;
+  --spacing-container-lg: 1440px;
+  --spacing-page-desktop: 80px;
+  --spacing-page-tablet: 48px;
+  --spacing-page-mobile: 24px;
+  --spacing-section: 120px;
+  --spacing-section-sm: 80px;
+  --spacing-component-gap: 32px;
+  --spacing-card-gap: 24px;
+  --spacing-button-gap: 16px;
+
+  --header-height-desktop: 80px;
+  --header-height-mobile: 72px;
+
+  --breakpoint-mobile: 390px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1280px;
+  --breakpoint-large-desktop: 1440px;
+
+  --grid-desktop: 12;
+  --grid-tablet: 8;
+  --grid-mobile: 4;
+
+  --radius-card: 24px;
+  --radius-button: 16px;
+  --radius-input: 14px;
+  --radius-badge: 999px;
+
+  --shadow-card: 0 8px 24px rgb(17 17 17 / 6%);
+  --shadow-soft: 0 24px 80px rgb(17 17 17 / 8%);
+  --shadow-lift: 0 16px 40px rgb(17 17 17 / 10%);
+
+  --ease-premium: ease-out;
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 400ms;
+  --transition-premium: color var(--duration-base) var(--ease-premium),
+    background-color var(--duration-base) var(--ease-premium),
+    border-color var(--duration-base) var(--ease-premium),
+    opacity var(--duration-base) var(--ease-premium),
+    box-shadow var(--duration-base) var(--ease-premium),
+    transform var(--duration-base) var(--ease-premium);
+}

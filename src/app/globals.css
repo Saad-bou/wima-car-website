@@ -1,26 +1,107 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --focus-ring: #d90429;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  min-height: 100%;
+  background: var(--color-background);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+:where(p, figure, blockquote, dl, dd) {
+  margin: 0;
+}
+
+:where(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(button, input, textarea, select) {
+  font: inherit;
+}
+
+:where(button, a, input, textarea, select):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+@layer utilities {
+  .container-page {
+    width: min(100% - calc(var(--spacing-page-mobile) * 2), var(--spacing-container));
+    margin-inline: auto;
+  }
+
+  .section-space {
+    padding-block: 64px;
+  }
+
+  .text-balance-premium {
+    text-wrap: balance;
+  }
+
+  .transition-premium {
+    transition-duration: var(--duration-base);
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+    transition-timing-function: var(--ease-premium);
+  }
+}
+
+@media (min-width: 768px) {
+  @layer utilities {
+    .container-page {
+      width: min(100% - calc(var(--spacing-page-tablet) * 2), var(--spacing-container));
+    }
+
+    .section-space {
+      padding-block: var(--spacing-section-sm);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  @layer utilities {
+    .container-page {
+      width: min(100% - calc(var(--spacing-page-desktop) * 2), var(--spacing-container));
+    }
+
+    .section-space {
+      padding-block: var(--spacing-section);
+    }
+  }
 }
