@@ -422,18 +422,21 @@ export function buildHeroWhatsAppLink(
 export function buildFleetWhatsAppLink(vehicle: Vehicle): string {
   const transmissionLabel =
     vehicle.transmission === "Automatic" ? "Automatique" : "Manuelle";
+  
+  const longTermTier = vehicle.pricingTiers[vehicle.pricingTiers.length - 1];
+  const startingPriceMad = longTermTier?.price ?? vehicle.pricingTiers[0]?.price ?? 0;
+
   const priceText =
     vehicle.priceOnRequest
       ? "Sur demande"
-      : `${vehicle.pricingTiers[0].price} DH`;
+      : `${startingPriceMad} DH`;
 
   const text = encodeURIComponent(
     `Bonjour! Je suis intéressé par:\n` +
       `Véhicule: ${vehicle.name}\n` +
       `Transmission: ${transmissionLabel}\n` +
       `Carburant: ${vehicle.fuel}\n` +
-      `Durée: 3–7 jours\n` +
-      `Prix par jour: ${priceText}\n` +
+      `Prix par jour: ${priceText}\n\n` +
       `Merci de me confirmer la disponibilité.`,
   );
   return `${WHATSAPP_LINK_BASE}?text=${text}`;
