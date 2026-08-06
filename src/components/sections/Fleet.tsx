@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
-import { Fuel, Settings2, Users, ArrowRight } from "lucide-react";
+import { Fuel, Settings2, Users, ArrowRight, MessageCircle, Mail } from "lucide-react";
 import {
   VEHICLES,
   CATEGORY_LABELS,
@@ -31,7 +31,22 @@ function CarCard({ car }: { car: Vehicle }) {
     label: CATEGORY_LABELS[car.category],
     className: CATEGORY_BADGE_STYLES[car.category],
   };
-  const startingPriceMad = car.pricingTiers[0]?.price ?? 0;
+  const longTermTier = car.pricingTiers[car.pricingTiers.length - 1];
+  const startingPriceMad = longTermTier?.price ?? car.pricingTiers[0]?.price ?? 0;
+  
+  const transmissionLabel = car.transmission === "Automatic" ? "Automatique" : "Manuelle";
+  const priceText = car.priceOnRequest ? "Sur demande" : `${startingPriceMad} DH`;
+  
+  const emailBody = `Bonjour! Je suis intéressé par:
+Véhicule: ${car.name}
+Transmission: ${transmissionLabel}
+Carburant: ${car.fuel}
+Prix par jour: ${priceText}
+
+Merci de me confirmer la disponibilité.`;
+
+  const emailSubject = `Réservation ${car.name}`;
+  const mailToLink = `mailto:contact@wimacar.ma?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <article
@@ -53,7 +68,7 @@ function CarCard({ car }: { car: Vehicle }) {
           fill
           loading="lazy"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain p-[9%]"
+          className="object-contain p-2 scale-110"
         />
       </div>
 
@@ -112,35 +127,32 @@ function CarCard({ car }: { car: Vehicle }) {
                   {formatPrice(startingPriceMad)}
                 </span>
                 <span className="text-[13px] font-semibold text-[var(--color-text-secondary)]">
-                  {t("perDay")}
+                  {t("perDay")} <span className="opacity-70 ml-1">({longTermTier?.range})</span>
                 </span>
               </span>
             )}
           </div>
-          {!car.priceOnRequest && (
-            <div className="flex flex-col items-end gap-0.5 text-right">
-              {car.pricingTiers.slice(-1).map((tier) => (
-                <span key={tier.range} className="text-[11px] text-[var(--color-text-secondary)]">
-                  Dès <strong className="font-bold">{formatPrice(tier.price)}</strong>
-                  <br />
-                  <span className="opacity-70">{tier.range}</span>
-                </span>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* Reserve button only */}
-        <div className="mt-auto">
+        {/* Reserve buttons */}
+        <div className="mt-auto flex flex-col gap-2.5">
           <a
             href={buildFleetWhatsAppLink(car)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Réserver ${car.name} via WhatsApp`}
-            className="group/btn inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-button)] bg-[var(--color-primary)] px-5 py-3 text-[14px] font-bold text-white transition-all duration-[250ms] ease-out hover:opacity-90 hover:shadow-[0_6px_20px_rgba(217,4,41,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)]"
+            className="group/btn flex w-full cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-button)] bg-[#25D366] px-4 py-3 text-[14px] font-bold text-white transition-all duration-[250ms] ease-out hover:opacity-90 hover:shadow-[0_6px_20px_rgba(37,211,102,0.35)]"
           >
-            {t("reserve")}
-            <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+            <MessageCircle className="size-4" />
+            WhatsApp
+          </a>
+          <a
+            href={mailToLink}
+            aria-label={`Réserver ${car.name} via Email`}
+            className="group/btn flex w-full cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-button)] bg-[var(--color-primary)] px-4 py-3 text-[14px] font-bold text-white transition-all duration-[250ms] ease-out hover:opacity-90 hover:shadow-[0_6px_20px_rgba(217,4,41,0.35)]"
+          >
+            <Mail className="size-4" />
+            Email
           </a>
         </div>
       </div>

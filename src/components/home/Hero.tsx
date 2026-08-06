@@ -277,7 +277,7 @@ export function Hero() {
                       {vehicle.name}
                     </span>
                     {/* Price chip */}
-                    {!vehicle.priceOnRequest && (
+                    {!vehicle.priceOnRequest && vehicle.pricingTiers.length > 0 && (
                       <span
                         className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
                           isSelected
@@ -285,7 +285,7 @@ export function Hero() {
                             : "bg-black/5 text-black/50"
                         }`}
                       >
-                        {formatPrice(vehicle.pricingTiers[0].price)}{t("perDay")}
+                        {formatPrice(vehicle.pricingTiers[vehicle.pricingTiers.length - 1].price)}{t("perDay")}
                       </span>
                     )}
                   </button>

@@ -238,7 +238,7 @@ const ContactCard = memo(function ContactCard({ reducedMotion }: { reducedMotion
         {[
           "98% des demandes traitées sur WhatsApp",
           "Assistance client 7j/7",
-          "Sans engagement de réservation"
+          "Acompte de 10% minimum"
         ].map((item, i) => (
           <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 14, fontWeight: 600, color: "var(--color-text-secondary)", lineHeight: 1.4 }}>
             <div style={{ flexShrink: 0, width: 20, height: 20, borderRadius: "50%", background: "rgba(34,197,94,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginTop: 2 }}>
