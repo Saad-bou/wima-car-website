@@ -27,6 +27,7 @@ import {
   CheckCheck,
   ArrowRight,
   Bell,
+  CreditCard,
 } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
@@ -762,7 +763,7 @@ export function HowItWorks() {
 
   const TRUST_CARDS = useMemo(() => [
     { id: "res",     icon: MessageCircle, label: t("hiwTrust1"),   sub: t("hiwTrust1Sub")  },
-    { id: "support", icon: CheckCircle2,  label: t("hiwTrust2"),   sub: t("hiwTrust2Sub") },
+    { id: "support", icon: CreditCard,  label: t("hiwTrust2"),   sub: t("hiwTrust2Sub") },
   ], [t]);
 
   const completedSteps = useMemo(() => STEPS.filter(s => s.id < activeStep).map(s => s.id), [activeStep, STEPS]);

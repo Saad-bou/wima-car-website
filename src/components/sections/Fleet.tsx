@@ -46,7 +46,7 @@ Prix par jour: ${priceText}
 Merci de me confirmer la disponibilité.`;
 
   const emailSubject = `Réservation ${car.name}`;
-  const mailToLink = `mailto:contact@wimacar.ma?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+  const mailToLink = `mailto:wimacar@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <article
