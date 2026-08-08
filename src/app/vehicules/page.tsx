@@ -5,7 +5,7 @@ import { Fleet } from "@/components/sections/Fleet";
 
 export const metadata: Metadata = {
   title: "Notre Flotte de Véhicules | Location de Voiture à Rabat",
-  description: "Découvrez la flotte de WIMA CAR. Location de voitures économiques, SUV et véhicules de luxe à Rabat et à l'aéroport de Rabat-Salé. Meilleurs prix garantis.",
+  description: "Découvrez la flotte de WIMA CAR à Rabat. Voitures économiques, SUV et véhicules premium disponibles à Agdal et à l'aéroport de Rabat-Salé. Réservez via WhatsApp.",
   alternates: {
     canonical: "/vehicules",
   },
