@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui";
 import { Fuel, Settings2, Users, ArrowRight, MessageCircle, Mail } from "lucide-react";
 import {
@@ -61,16 +62,16 @@ Merci de me confirmer la disponibilité.`;
       )}
 
       {/* Image wrapper — large and prominent */}
-      <div className="relative w-full overflow-hidden bg-[var(--color-surface)]" style={{ aspectRatio: "16/10" }}>
+      <Link href={`/vehicules/${car.slug}`} className="relative w-full overflow-hidden bg-[var(--color-surface)] block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" style={{ aspectRatio: "16/10" }}>
         <Image
           src={car.image}
           alt={`${car.name} – location de voiture à Rabat`}
           fill
           loading="lazy"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain p-2 scale-110"
+          className="object-contain p-2 scale-110 transition-transform duration-500 ease-out group-hover:scale-125"
         />
-      </div>
+      </Link>
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
@@ -88,9 +89,11 @@ Merci de me confirmer la disponibilité.`;
         </div>
 
         {/* Title */}
-        <h3 className="text-[17px] font-extrabold leading-tight tracking-tight text-[var(--color-text-primary)]">
-          {car.name}
-        </h3>
+        <Link href={`/vehicules/${car.slug}`} className="w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded">
+          <h3 className="text-[17px] font-extrabold leading-tight tracking-tight text-[var(--color-text-primary)] hover:text-[var(--color-primary)] transition-colors">
+            {car.name}
+          </h3>
+        </Link>
 
         {/* Specs row */}
         <div className="flex flex-wrap items-center gap-3 text-[13px] font-medium text-[var(--color-text-secondary)]">
