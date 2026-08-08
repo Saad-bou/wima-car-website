@@ -75,12 +75,80 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemaOrgData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_CONFIG.url}/#website`,
+        url: SITE_CONFIG.url,
+        name: SITE_CONFIG.name,
+        description: SITE_CONFIG.description,
+        publisher: {
+          "@id": `${SITE_CONFIG.url}/#organization`
+        },
+        inLanguage: SITE_CONFIG.language
+      },
+      {
+        "@type": ["AutoRental", "LocalBusiness", "Organization"],
+        "@id": `${SITE_CONFIG.url}/#organization`,
+        name: SITE_CONFIG.name,
+        url: SITE_CONFIG.url,
+        logo: `${SITE_CONFIG.url}/brand/logo-primary.png`,
+        image: `${SITE_CONFIG.url}/brand/logo-primary.png`,
+        description: SITE_CONFIG.description,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "44 Avenue Abdelkrim Al Khattabi, Agdal",
+          addressLocality: SITE_CONFIG.city,
+          addressCountry: "MA"
+        },
+        telephone: "+212661503446",
+        email: "wimacar@gmail.com",
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Rabat"
+          },
+          {
+            "@type": "City",
+            name: "Salé"
+          },
+          {
+            "@type": "Airport",
+            name: "Aéroport de Rabat-Salé"
+          }
+        ],
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          opens: "08:00",
+          closes: "22:00"
+        }
+      }
+    ]
+  };
+
   return (
     <html
       lang={SITE_CONFIG.language}
       className={`${inter.variable} ${manrope.variable} h-full scroll-smooth antialiased`}
     >
-      <body><SiteProvider>{children}</SiteProvider></body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgData) }}
+        />
+        <SiteProvider>{children}</SiteProvider>
+      </body>
     </html>
   );
 }

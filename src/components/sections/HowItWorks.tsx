@@ -19,10 +19,8 @@ import {
   Calendar,
   MessageCircle,
   CheckCircle2,
-  Star,
   Phone,
   Shield,
-  Headphones,
   Check,
   CheckCheck,
   ArrowRight,
@@ -311,8 +309,10 @@ const PhoneMock = memo(function PhoneMock({ isInView, onStepChange }: PhoneMockP
     startedRef.current = true;
 
     if (reducedMotion) {
-      setVisibleMessages(CHAT_MESSAGES);
-      onStepChange(4);
+      setTimeout(() => {
+        setVisibleMessages(CHAT_MESSAGES);
+        onStepChange(4);
+      }, 0);
       return;
     }
 
@@ -349,7 +349,10 @@ const PhoneMock = memo(function PhoneMock({ isInView, onStepChange }: PhoneMockP
       timerIds.current.push(t2);
     });
 
-    return () => timerIds.current.forEach(clearTimeout);
+    return () => {
+      const currentTimers = timerIds.current;
+      currentTimers.forEach(clearTimeout);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 

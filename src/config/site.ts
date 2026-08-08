@@ -2,7 +2,7 @@ import { BRAND_ASSETS } from "@/constants/BRAND_ASSETS";
 
 export const SITE_CONFIG = {
   name: "WIMA CAR",
-  url: "https://wimacar.ma",
+  url: "https://www.wimacar.com",
   language: "fr",
   locale: "fr_MA",
   description:

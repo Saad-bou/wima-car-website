@@ -4,7 +4,6 @@ import { memo, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView, useReducedMotion, Variants } from "framer-motion";
 import { ChevronDown, MessageCircle, PhoneCall, Check, CarFront, Star, Clock } from "lucide-react";
 import { Container } from "@/components/ui";
-import Head from "next/head";
 
 import { useSite } from "@/context/SiteContext";
 

@@ -14,7 +14,7 @@ import {
   useInView,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowRight, ExternalLink, Quote, Tag } from "lucide-react";
+import { ArrowRight, ExternalLink, Quote } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useSite } from "@/context/SiteContext";
 
@@ -511,7 +511,11 @@ export function GoogleReviews() {
       if (touchStartX.current === null) return;
       const delta = touchStartX.current - e.changedTouches[0].clientX;
       if (Math.abs(delta) > 40) {
-        delta > 0 ? goNext() : goPrev();
+        if (delta > 0) {
+          goNext();
+        } else {
+          goPrev();
+        }
       }
       touchStartX.current = null;
     },

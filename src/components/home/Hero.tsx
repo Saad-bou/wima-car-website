@@ -9,7 +9,6 @@ import {
   Check,
   Clock,
   Car,
-  Plane,
   ShieldCheck,
   Headset,
   MapPin,
@@ -35,21 +34,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-// ─── Schema.org structured data ──────────────
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "AutoRental",
-  name: "WIMA CAR",
-  description:
-    "Location de voiture premium à Rabat. Tarifs transparents, réservation rapide et livraison à l'aéroport.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Rabat",
-    addressCountry: "MA",
-  },
-  url: "https://wimacar.ma",
-  image: "https://wimacar.ma/images/hero/hero-wima.webp",
-};
 
 export function Hero() {
   const [selectedVehicleId, setSelectedVehicleId] = useState<string | null>(null);
@@ -91,10 +75,7 @@ export function Hero() {
 
   return (
     <section className="relative w-full overflow-hidden bg-white pt-12 pb-16 lg:pt-24 lg:pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
+
       <Container className="relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
           {/* ─── Left Column: Content ─────────── */}
@@ -183,6 +164,7 @@ export function Hero() {
               width={650}
               height={400}
               priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 650px"
               className="relative z-10 h-auto w-full origin-center scale-[1.15] object-contain sm:scale-125 lg:scale-[1.45] xl:scale-[1.5]"
             />
           </div>
@@ -237,7 +219,7 @@ export function Hero() {
                   <button
                     key={vehicle.id}
                     type="button"
-                    onClick={(e) => {
+                    onClick={() => {
                       setSelectedVehicleId(vehicle.id);
                     }}
                     aria-pressed={isSelected}
