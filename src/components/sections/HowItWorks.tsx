@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
+import { WHATSAPP_LINK_BASE } from "@/data/vehicles-data";
 import { useSite } from "@/context/SiteContext";
 
 // ─────────────────────────────────────────────
@@ -696,7 +697,7 @@ const CTAButton = memo(function CTAButton({ isInView, reducedMotion }: CTAProps)
       transition={{ delay: 0.9, duration: 0.5 }} style={{ marginTop: 28 }}
     >
       <motion.a
-        href="https://wa.me/212600000000?text=Bonjour%20WIMA%20CAR%2C%20je%20souhaite%20r%C3%A9server." target="_blank" rel="noopener noreferrer"
+        href={`${WHATSAPP_LINK_BASE}?text=Bonjour%20WIMA%20CAR%2C%20je%20souhaite%20r%C3%A9server.`} target="_blank" rel="noopener noreferrer"
         aria-label="Réserver maintenant via WhatsApp"
         whileHover={reducedMotion ? {} : { scale: 1.03, boxShadow: "0 20px 48px rgba(37,211,102,0.5)", y: -2 }}
         whileTap={reducedMotion ? {} : { scale: 0.97 }}

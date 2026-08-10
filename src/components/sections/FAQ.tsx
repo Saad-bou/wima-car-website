@@ -4,6 +4,7 @@ import { memo, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView, useReducedMotion, Variants } from "framer-motion";
 import { ChevronDown, MessageCircle, PhoneCall, Check, CarFront, Star, Clock } from "lucide-react";
 import { Container } from "@/components/ui";
+import { WHATSAPP_LINK_BASE } from "@/data/vehicles-data";
 
 import { useSite } from "@/context/SiteContext";
 
@@ -209,13 +210,13 @@ const ContactCard = memo(function ContactCard({ reducedMotion }: { reducedMotion
         </div>
         <div>
           <div style={{ fontSize: 12, color: "var(--color-text-secondary)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>Temps moyen</div>
-          <div style={{ fontSize: 16, fontWeight: 800, color: "var(--color-text-primary)" }}>&lt; 5 min</div>
+          <div style={{ fontSize: 16, fontWeight: 800, color: "var(--color-text-primary)" }}>Sur WhatsApp</div>
         </div>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
         <a
-          href="https://wa.me/212600000000"
+          href={WHATSAPP_LINK_BASE}
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -235,7 +236,7 @@ const ContactCard = memo(function ContactCard({ reducedMotion }: { reducedMotion
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14, marginBottom: 28 }}>
         {[
-          "98% des demandes traitées sur WhatsApp",
+          "Réservation simple sur WhatsApp",
           "Assistance client 7j/7",
           "Acompte de 10% minimum"
         ].map((item, i) => (
@@ -253,7 +254,7 @@ const ContactCard = memo(function ContactCard({ reducedMotion }: { reducedMotion
           {[...Array(5)].map((_, i) => <Star key={i} style={{ width: 16, height: 16 }} fill="currentColor" />)}
         </div>
         <div style={{ fontSize: 14, fontWeight: 700, color: "var(--color-text-primary)" }}>
-          4.8 <span style={{ fontWeight: 500, color: "var(--color-text-secondary)" }}>Google (120 avis)</span>
+          4.3 <span style={{ fontWeight: 500, color: "var(--color-text-secondary)" }}>/ 5 Google (60 avis)</span>
         </div>
       </div>
     </motion.div>
@@ -345,13 +346,13 @@ const BottomCTA = memo(function BottomCTA({ reducedMotion }: { reducedMotion: bo
           </motion.h3>
           
           <motion.p variants={itemVariants} style={{ fontSize: "clamp(18px, 2.5vw, 22px)", color: "var(--color-text-secondary)", marginBottom: 48, maxWidth: 600, marginInline: "auto", fontWeight: 500 }}>
-            Réservez en moins de 2 minutes sur WhatsApp.
+            Réservez simplement sur WhatsApp.
           </motion.p>
 
           <motion.div variants={itemVariants} style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 20, marginBottom: 40 }}>
             <motion.a
               whileHover={reducedMotion ? {} : { y: -3, boxShadow: "0 16px 40px rgba(37,211,102,0.3)" }}
-              href="https://wa.me/212600000000"
+              href={WHATSAPP_LINK_BASE}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -363,7 +364,7 @@ const BottomCTA = memo(function BottomCTA({ reducedMotion }: { reducedMotion: bo
             </motion.a>
             <motion.a
               whileHover={reducedMotion ? {} : { y: -3, boxShadow: "0 16px 40px rgba(0,0,0,0.06)" }}
-              href="tel:+212600000000"
+              href="tel:+212661503446"
               style={{ display: "inline-flex", alignItems: "center", gap: 12, background: "white", color: "var(--color-text-primary)", textDecoration: "none", fontWeight: 700, fontSize: 18, height: 56, padding: "0 40px", borderRadius: 28, border: "2px solid var(--color-border)", boxShadow: "0 4px 12px rgba(0,0,0,0.03)", transition: "background 0.2s, border-color 0.2s" }}
               onMouseOver={(e) => { e.currentTarget.style.background = "var(--color-surface)"; }}
               onMouseOut={(e) => { e.currentTarget.style.background = "white"; }}
@@ -390,7 +391,7 @@ const BottomCTA = memo(function BottomCTA({ reducedMotion }: { reducedMotion: bo
             </div>
             
             {[
-              "Réponse <5 min",
+              "Réservation sur WhatsApp",
               "Livraison Rabat & Aéroport",
               "Sans frais cachés"
             ].map((item, i) => (

@@ -10,6 +10,6 @@ export const BRAND_ASSETS = {
     appleTouchIcon: "/assets/brand/favicon/apple-touch-icon.png",
   },
   openGraph: {
-    default: "/assets/images/og/wima-car-og.webp",
+    default: "/assets/images/og/wima-car-og-square.webp",
   },
 } as const;

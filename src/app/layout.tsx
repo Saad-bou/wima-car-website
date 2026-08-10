@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       {
         url: SITE_CONFIG.assets.openGraph.default,
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: SITE_CONFIG.name,
       },
     ],
@@ -92,7 +92,7 @@ export default function RootLayout({
         name: SITE_CONFIG.name,
         url: SITE_CONFIG.url,
         logo: `${SITE_CONFIG.url}/brand/logo-primary.png`,
-        image: `${SITE_CONFIG.url}/brand/logo-primary.png`,
+        image: `${SITE_CONFIG.url}${SITE_CONFIG.assets.openGraph.default}`,
         description: SITE_CONFIG.description,
         address: {
           "@type": "PostalAddress",

@@ -775,7 +775,7 @@ export function GoogleReviews() {
                   marginTop: 4,
                 }}
               >
-                {t("satisfiedClients").replace("+500 ", "")}
+                avis Google
               </p>
             </div>
 

@@ -8,6 +8,7 @@ import { GoogleReviews } from "@/components/sections/GoogleReviews";
 import { FAQ } from "@/components/sections/FAQ";
 
 export const metadata: Metadata = {
+  title: "Location de voiture à Rabat | WIMA CAR",
   alternates: {
     canonical: "/",
   },
