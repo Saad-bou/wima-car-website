@@ -564,8 +564,6 @@ export function GoogleReviews() {
       ref={sectionRef}
       id="google-reviews"
       aria-labelledby="reviews-heading"
-      itemScope
-      itemType="https://schema.org/LocalBusiness"
       style={{
         width: "100%",
         paddingTop: "clamp(64px, 8vw, 120px)",
