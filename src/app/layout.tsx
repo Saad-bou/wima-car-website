@@ -96,8 +96,9 @@ export default function RootLayout({
         description: SITE_CONFIG.description,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "44 Avenue Abdelkrim Al Khattabi, Agdal",
+          streetAddress: "102-103 Avenue Abdelkrim Al Khattabi, L'Océan",
           addressLocality: SITE_CONFIG.city,
+          postalCode: "10040",
           addressCountry: "MA"
         },
         telephone: "+212661503446",

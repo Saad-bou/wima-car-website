@@ -382,8 +382,8 @@ const ContactCol = memo(function ContactCol({ reducedMotion }: { reducedMotion: 
         >
           <MapPin style={{ width: 16, height: 16, color: "var(--color-primary)", flexShrink: 0, marginTop: 2 }} />
           <span>
-            44 Avenue Abdelkrim Al Khattabi<br />
-            Agdal, Rabat
+            102-103 Avenue Abdelkrim Al Khattabi<br />
+            L&apos;Océan, 10040 Rabat, Maroc
           </span>
         </div>
 

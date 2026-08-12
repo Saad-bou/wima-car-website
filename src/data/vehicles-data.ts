@@ -9,7 +9,7 @@ export const WHATSAPP_LINK_BASE = `https://wa.me/${WHATSAPP_NUMBER}`;
 // ─── Types ───────────────────────────────────
 export type VehicleCategory = "Economy" | "SUV" | "Luxe";
 
-export type FuelType = "Essence" | "Diesel";
+export type FuelType = "Essence" | "Diesel" | "Hybride";
 
 export type Transmission = "Automatic" | "Manual";
 
@@ -28,6 +28,7 @@ export interface Vehicle {
   transmission: Transmission;
   seats: number;
   priceOnRequest?: boolean;
+  startingPrice?: number;
   pricingTiers: PricingTier[];
   image: string;
   featured?: boolean;
@@ -110,7 +111,7 @@ export const VEHICLES: Vehicle[] = [
     "slug": "citroen-c3",
     "name": "Citroën C3",
     "category": "Economy",
-    "fuel": "Essence",
+    "fuel": "Diesel",
     "transmission": "Manual",
     "seats": 5,
     "pricingTiers": [
@@ -378,6 +379,246 @@ export const VEHICLES: Vehicle[] = [
       }
     ],
     "image": "/images/fleet/renault-clio-5.webp"
+  },
+  {
+    "id": "nissan-micra",
+    "slug": "nissan-micra",
+    "name": "Nissan Micra",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "seats": 5,
+    "startingPrice": 350,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 450 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 400 },
+      { "label": "Long terme", "range": "+15 jours", "price": 350 }
+    ],
+    "image": "/images/fleet/nissan-micra.webp"
+  },
+  {
+    "id": "geely-gx3-pro-manual",
+    "slug": "geely-gx3-pro-manual",
+    "name": "Geely GX3 Pro Manuelle",
+    "category": "SUV",
+    "fuel": "Essence",
+    "transmission": "Manual",
+    "seats": 5,
+    "startingPrice": 320,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 400 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 350 },
+      { "label": "Long terme", "range": "+15 jours", "price": 320 }
+    ],
+    "image": "/images/fleet/geely-gx3-pro-manual.webp"
+  },
+  {
+    "id": "renault-clio-5-manual",
+    "slug": "renault-clio-5-manual",
+    "name": "Renault Clio 5 Manuelle",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "seats": 5,
+    "startingPrice": 320,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 450 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 400 },
+      { "label": "Long terme", "range": "+15 jours", "price": 320 }
+    ],
+    "image": "/images/fleet/renault-clio-5-manual.webp"
+  },
+  {
+    "id": "geely-gx3-pro-auto",
+    "slug": "geely-gx3-pro-auto",
+    "name": "Geely GX3 Pro Automatique",
+    "category": "SUV",
+    "fuel": "Essence",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 420,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 500 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 460 },
+      { "label": "Long terme", "range": "+15 jours", "price": 420 }
+    ],
+    "image": "/images/fleet/geely-gx3-pro-auto.webp"
+  },
+  {
+    "id": "renault-express",
+    "slug": "renault-express",
+    "name": "Renault Express",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "seats": 5,
+    "startingPrice": 370,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 450 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 420 },
+      { "label": "Long terme", "range": "+15 jours", "price": 370 }
+    ],
+    "image": "/images/fleet/renault-express.webp"
+  },
+  {
+    "id": "fiat-500-cabriolet",
+    "slug": "fiat-500-cabriolet",
+    "name": "Fiat 500 Cabriolet",
+    "category": "Economy",
+    "fuel": "Essence",
+    "transmission": "Automatic",
+    "seats": 4,
+    "startingPrice": 370,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 450 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 400 },
+      { "label": "Long terme", "range": "+15 jours", "price": 370 }
+    ],
+    "image": "/images/fleet/fiat-500-cabriolet.webp"
+  },
+  {
+    "id": "renault-megane-citadine",
+    "slug": "renault-megane-citadine",
+    "name": "Renault Mégane Citadine",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 420,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 500 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 470 },
+      { "label": "Long terme", "range": "+15 jours", "price": 420 }
+    ],
+    "image": "/images/fleet/renault-megane-citadine.webp"
+  },
+  {
+    "id": "renault-megane-berline",
+    "slug": "renault-megane-berline",
+    "name": "Renault Mégane Berline",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 420,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 500 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 470 },
+      { "label": "Long terme", "range": "+15 jours", "price": 420 }
+    ],
+    "image": "/images/fleet/renault-megane-berline.webp"
+  },
+  {
+    "id": "hyundai-elantra",
+    "slug": "hyundai-elantra",
+    "name": "Hyundai Elantra",
+    "category": "Economy",
+    "fuel": "Hybride",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 600,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 700 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 650 },
+      { "label": "Long terme", "range": "+15 jours", "price": 600 }
+    ],
+    "image": "/images/fleet/hyundai-elantra.webp"
+  },
+  {
+    "id": "renault-arkana",
+    "slug": "renault-arkana",
+    "name": "Renault Arkana",
+    "category": "SUV",
+    "fuel": "Essence",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 600,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 700 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 650 },
+      { "label": "Long terme", "range": "+15 jours", "price": 600 }
+    ],
+    "image": "/images/fleet/renault-arkana.webp"
+  },
+  {
+    "id": "audi-q8",
+    "slug": "audi-q8",
+    "name": "Audi Q8",
+    "category": "Luxe",
+    "fuel": "Diesel",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 3500,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 3700 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 3600 },
+      { "label": "Long terme", "range": "+15 jours", "price": 3500 }
+    ],
+    "image": "/images/fleet/audi-q8.webp"
+  },
+  {
+    "id": "hyundai-accent",
+    "slug": "hyundai-accent",
+    "name": "Hyundai Accent",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 370,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 450 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 400 },
+      { "label": "Long terme", "range": "+15 jours", "price": 370 }
+    ],
+    "image": "/images/fleet/hyundai-accent.webp"
+  },
+  {
+    "id": "dacia-jogger",
+    "slug": "dacia-jogger",
+    "name": "Dacia Jogger",
+    "category": "Economy",
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "seats": 7,
+    "startingPrice": 420,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 500 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 450 },
+      { "label": "Long terme", "range": "+15 jours", "price": 420 }
+    ],
+    "image": "/images/fleet/dacia-jogger.webp"
+  },
+  {
+    "id": "mg3",
+    "slug": "mg3",
+    "name": "MG3",
+    "category": "Economy",
+    "fuel": "Essence",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 420,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 500 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 450 },
+      { "label": "Long terme", "range": "+15 jours", "price": 420 }
+    ],
+    "image": "/images/fleet/mg3.webp"
+  },
+  {
+    "id": "nissan-juke",
+    "slug": "nissan-juke",
+    "name": "Nissan Juke",
+    "category": "SUV",
+    "fuel": "Essence",
+    "transmission": "Automatic",
+    "seats": 5,
+    "startingPrice": 470,
+    "pricingTiers": [
+      { "label": "Court terme", "range": "1-3 jours", "price": 550 },
+      { "label": "Moyen terme", "range": "4-14 jours", "price": 500 },
+      { "label": "Long terme", "range": "+15 jours", "price": 470 }
+    ],
+    "image": "/images/fleet/nissan-juke.webp"
   }
 ];
 
