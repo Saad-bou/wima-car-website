@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   language: "fr",
   locale: "fr_MA",
   description:
-    "Location de voiture a Rabat avec WIMA CAR. Vehicules fiables, prix transparents et reservation rapide via WhatsApp.",
+    "Location de voiture à Rabat avec WIMA CAR. Véhicules fiables, prix transparents et réservation rapide via WhatsApp.",
   city: "Rabat",
   country: "Morocco",
   assets: BRAND_ASSETS,

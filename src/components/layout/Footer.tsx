@@ -13,40 +13,7 @@ import {
 import { Container } from "@/components/ui";
 import { useSite } from "@/context/SiteContext";
 import type { TranslationKey } from "@/data/translations";
-
-const Instagram = ({ size = 24 }: { size?: number }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-);
-
-const Facebook = ({ size = 24 }: { size?: number }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/constants/GOOGLE_REVIEWS";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ANIMATION VARIANTS
@@ -133,8 +100,8 @@ const BrandCol = memo(function BrandCol({
         <Image
           alt="WIMA CAR"
           src="/brand/logo-primary.png"
-          width={160}
-          height={40}
+          width={1280}
+          height={240}
           priority
           style={{ width: "auto", height: "40px" }}
         />
@@ -176,7 +143,7 @@ const BrandCol = memo(function BrandCol({
           ))}
         </div>
         <div>
-          <span style={{ fontSize: 14, fontWeight: 800, color: "var(--color-text-primary)" }}>4.3</span>
+          <span style={{ fontSize: 14, fontWeight: 800, color: "var(--color-text-primary)" }}>{GOOGLE_REVIEW_RATING}</span>
           <span style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-secondary)" }}>
             {" "}/ 5 Google
           </span>
@@ -189,7 +156,7 @@ const BrandCol = memo(function BrandCol({
           }}
         />
         <span style={{ fontSize: 12, fontWeight: 600, color: "var(--color-text-secondary)" }}>
-          60 avis
+          {GOOGLE_REVIEW_COUNT} avis
         </span>
       </motion.div>
     </motion.div>
@@ -208,7 +175,7 @@ const NavCol = memo(function NavCol({
     { label: "Accueil", href: "/" },
     { label: t("ourFleet"), href: "#fleet" },
     { label: t("faq"), href: "#faq" },
-    { label: t("reviews"), href: "#reviews" },
+    { label: t("reviews"), href: "#google-reviews" },
     { label: t("contact"), href: "#contact" },
   ];
 
@@ -339,7 +306,7 @@ const ContactCol = memo(function ContactCol({ reducedMotion }: { reducedMotion: 
             }}
           >
             <PhoneCall style={{ width: 16, height: 16, color: "var(--color-primary)", flexShrink: 0 }} />
-            +212 661-503446
+            06 61 50 34 46
           </motion.a>
           <div style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-secondary)", paddingLeft: 26 }}>
             Ouvert 7j/7 &bull; 08:00 — 22:00
@@ -462,23 +429,6 @@ const BottomBar = memo(function BottomBar({
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-        {/* Social Icons */}
-        <motion.a 
-          whileHover={{ y: -2, color: "var(--color-primary)" }}
-          href="#" 
-          aria-label="Instagram"
-          style={{ color: "var(--color-text-secondary)", transition: "color 0.2s" }}
-        >
-          <Instagram size={20} />
-        </motion.a>
-        <motion.a 
-          whileHover={{ y: -2, color: "var(--color-primary)" }}
-          href="#" 
-          aria-label="Facebook"
-          style={{ color: "var(--color-text-secondary)", transition: "color 0.2s" }}
-        >
-          <Facebook size={20} />
-        </motion.a>
         <motion.a 
           whileHover={{ y: -2, color: "var(--color-primary)" }}
           href="https://maps.google.com/?q=Rabat+Maroc" 

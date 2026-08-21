@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useInView, useReducedMotion, Variants } from "
 import { ChevronDown, MessageCircle, PhoneCall, Check, CarFront, Star, Clock } from "lucide-react";
 import { Container } from "@/components/ui";
 import { WHATSAPP_LINK_BASE } from "@/data/vehicles-data";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/constants/GOOGLE_REVIEWS";
 
 import { useSite } from "@/context/SiteContext";
 
@@ -254,7 +255,7 @@ const ContactCard = memo(function ContactCard({ reducedMotion }: { reducedMotion
           {[...Array(5)].map((_, i) => <Star key={i} style={{ width: 16, height: 16 }} fill="currentColor" />)}
         </div>
         <div style={{ fontSize: 14, fontWeight: 700, color: "var(--color-text-primary)" }}>
-          4.3 <span style={{ fontWeight: 500, color: "var(--color-text-secondary)" }}>/ 5 Google (60 avis)</span>
+          {GOOGLE_REVIEW_RATING} <span style={{ fontWeight: 500, color: "var(--color-text-secondary)" }}>/ 5 Google ({GOOGLE_REVIEW_COUNT} avis)</span>
         </div>
       </div>
     </motion.div>
@@ -387,7 +388,7 @@ const BottomCTA = memo(function BottomCTA({ reducedMotion }: { reducedMotion: bo
               <div style={{ display: "flex", color: "#f59e0b" }}>
                 {[...Array(5)].map((_, i) => <Star key={i} style={{ width: 14, height: 14 }} fill="currentColor" />)}
               </div>
-              4.3 Google
+              {GOOGLE_REVIEW_RATING} Google
             </div>
             
             {[

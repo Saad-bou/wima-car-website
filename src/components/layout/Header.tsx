@@ -23,7 +23,7 @@ const currencies: Currency[] = ["MAD", "EUR", "USD"];
 const languages: Language[] = ["FR", "AR", "EN", "ES", "IT"];
 
 const phoneHref = "tel:+212661503446";
-const phoneLabel = "+212 661-503446";
+const phoneLabel = "06 61 50 34 46";
 
 
 // ─────────────────────────────────────────────
@@ -174,8 +174,8 @@ export function Header() {
           <Image
             alt="WIMA CAR"
             src="/brand/logo-primary.png"
-            width={160}
-            height={40}
+            width={1280}
+            height={240}
             priority
             style={{ width: "auto", height: "40px" }}
           />

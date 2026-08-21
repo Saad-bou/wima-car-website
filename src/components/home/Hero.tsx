@@ -23,6 +23,7 @@ import {
   type DurationKey,
 } from "@/data/vehicles-data";
 import { useSite } from "@/context/SiteContext";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/constants/GOOGLE_REVIEWS";
 import { useRef } from "react";
 
 // ─── WhatsApp icon SVG ───────────────────────
@@ -124,10 +125,10 @@ export function Hero() {
                     <Star key={i} className="size-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <span className="text-base font-bold text-black">4.3/5</span>
+                <span className="text-base font-bold text-black">{GOOGLE_REVIEW_RATING}/5</span>
               </div>
               <span className="text-sm font-medium text-black/60">
-                60 avis Google
+                {GOOGLE_REVIEW_COUNT} avis Google
               </span>
             </div>
           </div>

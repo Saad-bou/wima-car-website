@@ -17,6 +17,7 @@ import {
 import { ArrowRight, ExternalLink, Quote } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useSite } from "@/context/SiteContext";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_RATING } from "@/constants/GOOGLE_REVIEWS";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -732,7 +733,7 @@ export function GoogleReviews() {
                   gap: 4,
                 }}
               >
-                4.3
+                {GOOGLE_REVIEW_RATING}
                 <span
                   style={{
                     fontSize: "clamp(24px, 3vw, 32px)",
@@ -759,7 +760,7 @@ export function GoogleReviews() {
                 }}
               >
                 <AnimatedCounter
-                  target={60}
+                  target={GOOGLE_REVIEW_COUNT}
                   suffix=""
                   isInView={isInView}
                   reducedMotion={reducedMotion}
@@ -905,7 +906,7 @@ export function GoogleReviews() {
             href="https://www.google.com/search?q=wima+car+rabat+avis"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Voir les 60 avis Google de WIMA CAR"
+            aria-label={`Voir les ${GOOGLE_REVIEW_COUNT} avis Google de WIMA CAR`}
             whileHover={
               reducedMotion
                 ? {}
@@ -960,7 +961,7 @@ export function GoogleReviews() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 8, position: "relative", zIndex: 1 }}>
               <GoogleLogo size={20} />
-              <span>Voir les 60 avis Google</span>
+              <span>Voir les {GOOGLE_REVIEW_COUNT} avis Google</span>
             </div>
 
             <div

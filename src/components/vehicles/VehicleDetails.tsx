@@ -144,7 +144,7 @@ Merci de me confirmer la disponibilite.`;
             </div>
 
             <p className="mt-6 text-sm text-[var(--color-text-secondary)]">
-              * Sous reserve de disponibilite a Rabat et a l&apos;aeroport de Rabat-Sale. Les tarifs peuvent varier selon la saison.
+              * Sous réserve de disponibilité à Rabat et à l&apos;aéroport de Rabat-Salé. Les tarifs peuvent varier selon la saison.
             </p>
           </div>
         </div>

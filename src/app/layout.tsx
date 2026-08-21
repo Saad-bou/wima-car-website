@@ -96,12 +96,12 @@ export default function RootLayout({
         description: SITE_CONFIG.description,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "102-103 Avenue Abdelkrim Al Khattabi, L'Océan",
+          streetAddress: "102-103, Avenue Abdelkrim Al Khattabi, L'Océan",
           addressLocality: SITE_CONFIG.city,
           postalCode: "10040",
           addressCountry: "MA"
         },
-        telephone: "+212661503446",
+        telephone: "06 61 50 34 46",
         email: "wimacar@gmail.com",
         areaServed: [
           {

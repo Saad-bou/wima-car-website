@@ -22,13 +22,13 @@ export async function generateMetadata({
 
   if (!vehicle) {
     return {
-      title: "Vehicule introuvable | WIMA CAR",
+      title: "Véhicule introuvable | WIMA CAR",
     };
   }
 
   return {
-    title: `Location ${vehicle.name} a Rabat | WIMA CAR`,
-    description: `Louez une ${vehicle.name} (${CATEGORY_LABELS[vehicle.category]}). Transmission ${vehicle.transmission === "Automatic" ? "Automatique" : "Manuelle"}, ${vehicle.fuel}. Reservez votre voiture chez WIMA CAR a Rabat.`,
+    title: `Location ${vehicle.name} à Rabat | WIMA CAR`,
+    description: `Louez une ${vehicle.name} (${CATEGORY_LABELS[vehicle.category]}). Transmission ${vehicle.transmission === "Automatic" ? "Automatique" : "Manuelle"}, ${vehicle.fuel}. Réservez votre voiture chez WIMA CAR à Rabat.`,
     alternates: {
       canonical: `/vehicules/${vehicle.slug}`,
     },
@@ -60,7 +60,7 @@ export default async function VehiclePage({
       {
         "@type": "ListItem",
         position: 2,
-        name: "Vehicules",
+        name: "Véhicules",
         item: `${SITE_CONFIG.url}/vehicules`,
       },
       {

@@ -308,13 +308,17 @@ const PhoneMock = memo(function PhoneMock({ isInView, onStepChange }: PhoneMockP
   useEffect(() => {
     if (!isInView || startedRef.current) return;
     startedRef.current = true;
+    const scheduledTimers: ReturnType<typeof setTimeout>[] = [];
 
     if (reducedMotion) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setVisibleMessages(CHAT_MESSAGES);
         onStepChange(4);
       }, 0);
-      return;
+      scheduledTimers.push(timer);
+      return () => {
+        scheduledTimers.forEach(clearTimeout);
+      };
     }
 
     CHAT_MESSAGES.forEach((msg, idx) => {
@@ -327,6 +331,7 @@ const PhoneMock = memo(function PhoneMock({ isInView, onStepChange }: PhoneMockP
           setAgentStatus("typing");
         }, msg.delay - 800);
         timerIds.current.push(t1);
+        scheduledTimers.push(t1);
       }
 
       const t2 = setTimeout(() => {
@@ -348,11 +353,11 @@ const PhoneMock = memo(function PhoneMock({ isInView, onStepChange }: PhoneMockP
         if (entry) onStepChange(Number(entry[0]));
       }, msg.delay);
       timerIds.current.push(t2);
+      scheduledTimers.push(t2);
     });
 
     return () => {
-      const currentTimers = timerIds.current;
-      currentTimers.forEach(clearTimeout);
+      scheduledTimers.forEach(clearTimeout);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
