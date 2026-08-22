@@ -14,13 +14,15 @@ import {
 import { useState, useEffect } from "react";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { LANGUAGES, getPathWithoutLanguage, localizedPath } from "@/lib/i18n";
 import { useSite, type Currency, type Language } from "@/context/SiteContext";
+import { usePathname, useRouter } from "next/navigation";
 
 // ─────────────────────────────────────────────
 // CONSTANTS
 // ─────────────────────────────────────────────
 const currencies: Currency[] = ["MAD", "EUR", "USD"];
-const languages: Language[] = ["FR", "AR", "EN", "ES", "IT"];
+const languages: Language[] = [...LANGUAGES];
 
 const phoneHref = "tel:+212661503446";
 const phoneLabel = "06 61 50 34 46";
@@ -117,6 +119,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const { currency, language, setCurrency, setLanguage, t } = useSite();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const navItems = [
     { label: t("vehicles"), href: "#fleet" },
@@ -154,6 +158,12 @@ export function Header() {
 
   const handleSelectorOpen = (selector: SelectorKind) => {
     setOpenSelector((cur) => (cur === selector ? null : selector));
+  };
+
+  const selectLanguage = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    setOpenSelector(null);
+    router.push(localizedPath(nextLanguage, getPathWithoutLanguage(pathname)));
   };
 
   return (
@@ -218,7 +228,7 @@ export function Header() {
             isOpen={openSelector === "language"}
             label={language}
             onOpenChange={() => handleSelectorOpen("language")}
-            onSelect={(v) => { setLanguage(v); setOpenSelector(null); }}
+            onSelect={selectLanguage}
             options={languages}
           />
 
@@ -328,7 +338,7 @@ export function Header() {
                         : "border-neutral-200 bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                     )}
                     key={opt}
-                    onClick={() => setLanguage(opt)}
+                    onClick={() => selectLanguage(opt)}
                     type="button"
                   >
                     {opt}

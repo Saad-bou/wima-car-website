@@ -4,7 +4,7 @@ import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui";
-import { Fuel, Settings2, Users, ArrowRight, MessageCircle, Mail } from "lucide-react";
+import { Fuel, Settings2, Users, ArrowRight, MessageCircle, Mail, ShieldCheck, Gauge, UserPlus, Plane } from "lucide-react";
 import {
   VEHICLES,
   CATEGORY_LABELS,
@@ -37,6 +37,12 @@ function CarCard({ car }: { car: Vehicle }) {
   
   const transmissionLabel = car.transmission === "Automatic" ? "Automatique" : "Manuelle";
   const priceText = car.priceOnRequest ? "Sur demande" : `${startingPriceMad} DH`;
+  const benefits = [
+    { icon: ShieldCheck, label: t("benefitInsurance") },
+    { icon: Gauge, label: t("benefitMileage") },
+    { icon: UserPlus, label: t("benefitSecondDriver") },
+    { icon: Plane, label: t("benefitAirportDelivery") },
+  ];
   
   const emailBody = `Bonjour! Je suis intéressé par:
 Véhicule: ${car.name}
@@ -109,6 +115,18 @@ Merci de me confirmer la disponibilité.`;
             <Users className="size-3.5 shrink-0 text-[var(--color-primary)]/70" />
             {car.seats} places
           </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          {benefits.map(({ icon: Icon, label }) => (
+            <span
+              key={label}
+              className="flex min-h-10 items-center gap-1.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-2 text-[11px] font-semibold leading-tight text-[var(--color-text-secondary)]"
+            >
+              <Icon className="size-3.5 shrink-0 text-[var(--color-primary)]" />
+              <span>{label}</span>
+            </span>
+          ))}
         </div>
 
         {/* Divider */}

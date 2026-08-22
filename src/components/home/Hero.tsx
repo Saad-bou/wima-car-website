@@ -232,7 +232,7 @@ export function Hero() {
                           : "border-transparent bg-[var(--color-surface)] hover:border-black/10 hover:bg-white hover:shadow-sm"
                       }
                     `}
-                    style={{ width: "clamp(160px, calc(98% - 6px), 220px)" }}
+                    style={{ width: "clamp(180px, calc(98% - 6px), 250px)" }}
                   >
                     {isSelected && (
                       <div className="absolute -right-2 -top-2 z-10 flex size-6 items-center justify-center rounded-full bg-[var(--color-primary)] text-white shadow-md">
@@ -240,13 +240,13 @@ export function Hero() {
                       </div>
                     )}
                     {/* Car image — bigger */}
-                    <div className="relative h-28 w-full overflow-hidden">
+                    <div className="relative h-36 w-full overflow-hidden sm:h-40">
                       <Image
                         src={vehicle.image}
                         alt={vehicle.name}
                         fill
                         sizes="220px"
-                        className="object-contain p-1 transition-transform duration-300 group-hover/v:scale-105"
+                        className="object-contain p-0.5 scale-125 transition-transform duration-300 group-hover/v:scale-[1.35]"
                       />
                     </div>
                     {/* Name */}

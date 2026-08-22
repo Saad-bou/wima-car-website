@@ -138,7 +138,7 @@ export const VEHICLES: Vehicle[] = [
     "slug": "cupra-formentor",
     "name": "Cupra Formentor",
     "category": "SUV",
-    "fuel": "Essence",
+    "fuel": "Diesel",
     "transmission": "Automatic",
     "seats": 5,
     "priceOnRequest": true,

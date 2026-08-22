@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { VehicleDetails } from "@/components/vehicles/VehicleDetails";
 import { CATEGORY_LABELS, VEHICLES } from "@/data/vehicles-data";
 import { SITE_CONFIG } from "@/config/site";
+import { languageAlternates } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return VEHICLES.map((vehicle) => ({
@@ -31,6 +32,7 @@ export async function generateMetadata({
     description: `Louez une ${vehicle.name} (${CATEGORY_LABELS[vehicle.category]}). Transmission ${vehicle.transmission === "Automatic" ? "Automatique" : "Manuelle"}, ${vehicle.fuel}. Réservez votre voiture chez WIMA CAR à Rabat.`,
     alternates: {
       canonical: `/vehicules/${vehicle.slug}`,
+      languages: languageAlternates(`/vehicules/${vehicle.slug}`),
     },
   };
 }

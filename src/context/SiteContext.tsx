@@ -62,10 +62,16 @@ const SiteContext = createContext<SiteContextValue | null>(null);
 // ─────────────────────────────────────────────
 // PROVIDER
 // ─────────────────────────────────────────────
-export function SiteProvider({ children }: { children: ReactNode }) {
+export function SiteProvider({
+  children,
+  initialLanguage = "FR",
+}: {
+  children: ReactNode;
+  initialLanguage?: Language;
+}) {
   // Always start with FR + MAD — user changes via Header
   const [currency, setCurrencyState] = useState<Currency>("MAD");
-  const [language, setLanguageState] = useState<Language>("FR");
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   // Sync lang and dir attributes when user changes language
   useEffect(() => {
